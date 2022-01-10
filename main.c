@@ -51,11 +51,18 @@ int main(){
             
         }else if(input=='D'){
             printf("in D");
+            printf("\nsize of:%d\n",n);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            printf("%d ",*(graph+i*n+j));
+        }
+        printf("\n");
+    }
             scanf("%c",&input);
             if(input==' '){
                 scanf("%c",&input);
             }
-            remove_node(graph,n,(int)input);
+            remove_node(graph,n,(int)input,values);
             n--;
         }else if(input=='S'){
             printf("in S");

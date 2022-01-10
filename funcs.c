@@ -71,6 +71,9 @@ int* add_node(int *graph,int n,int *values,char *curinput,int* exist){
 
 int* remove_node(int *graph,int n,int k,int *vals){
     k=val_to_key(k,vals,n);
+    if(k==-1){
+        return graph;
+    }
     int *new_g=(int*)malloc(sizeof(int)*(n-1)*(n-1));
     for(int i=0;i<k;i++){
         for(int j=0;j<k;j++){
@@ -88,7 +91,14 @@ int* remove_node(int *graph,int n,int k,int *vals){
             *(new_g+(i-1)*(n-1)+j-1)=*(graph+i*n+j);
         }
     }
-
+    int* new_v=(int*)malloc(sizeof(int)*(n-1));
+    for(int i=0;i<k;i++){
+        *(new_v+i)=*(vals+i);
+    }
+    for(int i=k;i<n-1;i++){
+        *(new_v+i)=*(vals+i+1);
+    }
+    vals=(int*)realloc(new_v,sizeof(int)*n-1);
     free(graph);
     return new_g;
 }
