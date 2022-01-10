@@ -56,7 +56,7 @@ int main(){
             n--;
         }else if(input=='S'){
 
-            printf("%d",shortest_path(graph,n,values));
+            printf("Dijsktra shortest path: %d \n",shortest_path(graph,n,values));
             scanf("%c",&input);
         }else if(input=='T'){
 
